@@ -23,8 +23,7 @@ public class EnemyAI : MonoBehaviour {
     private int patrolPointIndex = 0;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         player = GameObject.FindWithTag("Player").transform;
         //Get a reference to the Seeker component we added earlier
         seeker = GetComponent<Seeker>();
@@ -36,16 +35,14 @@ public class EnemyAI : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         distToPlayer = Vector3.Distance(player.position, transform.position);
-        print(distToPlayer);
-        if(distToPlayer <= followDistance) {
+        if (distToPlayer <= followDistance) {
             shouldFollow = true;
             TargetPosition = player.position;
         }
 
-        if(shouldFollow && distToPlayer >= unFollowDistance) {
+        if (shouldFollow && distToPlayer >= unFollowDistance) {
             shouldFollow = false;
             TargetPosition = patrolPoints[patrolPointIndex].position;
         }
@@ -59,9 +56,7 @@ public class EnemyAI : MonoBehaviour {
         if (Path != null) {
             //End of path reached
             if (currentWaypoint >= Path.vectorPath.Count) {
-                if(!shouldFollow) {
-                    patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
-                }                
+                patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
                 currentWaypoint = 0;
                 time += Time.deltaTime;
                 if (time >= waitTime) {
