@@ -37,10 +37,9 @@ public class EchoPropagation : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (!collision.gameObject.CompareTag("Player")) {
-            print("Collided with " + collision.gameObject.name);
             echoLight.enabled = true;
             EchoRigidBody.velocity = Vector3.zero;
-            print("setting " + EchoRigidBody + " velocity to " + EchoRigidBody.velocity);
+            EchoRigidBody.angularVelocity = Vector3.zero;
         }
     }
 }

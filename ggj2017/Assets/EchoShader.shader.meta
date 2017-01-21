@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 87d8e0c8b9a7bcc4d9c82d4e8e0c767b
+timeCreated: 1485018769
+licenseType: Free
+ShaderImporter:
+  defaultTextures:
+  - _ShadowTex: {instanceID: 0}
+  - _FalloffTex: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
