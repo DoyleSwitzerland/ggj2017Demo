@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 378371827}
   m_Layer: 0
   m_Name: BottomBarrier
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,6 +343,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce505c2e8d3f7c42899227a79cef7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSpeed: 3
+  topSpeed: 8
+  accelerationFactor: 5
 --- !u!65 &407618546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -368,7 +371,7 @@ GameObject:
   - component: {fileID: 727997420}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -503,7 +506,7 @@ GameObject:
   - component: {fileID: 933095493}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,7 +587,7 @@ GameObject:
   - component: {fileID: 1337135843}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -665,7 +668,7 @@ GameObject:
   - component: {fileID: 1341630236}
   m_Layer: 0
   m_Name: LeftBarrier
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -746,7 +749,7 @@ GameObject:
   - component: {fileID: 1578822273}
   m_Layer: 0
   m_Name: UpperBarrier
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -827,7 +830,7 @@ GameObject:
   - component: {fileID: 1730742942}
   m_Layer: 0
   m_Name: RightBarrier
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -908,7 +911,7 @@ GameObject:
   - component: {fileID: 2141273274}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

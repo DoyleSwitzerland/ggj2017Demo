@@ -12,10 +12,13 @@ public class BatMovement : MonoBehaviour {
     private float inputHorizontal;
     private float inputVertical;
     private float speed;
+    private bool isStunned;
 
     // Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
+        isStunned = false;
+        speed = minSpeed;
 	}
 	
 	// Update is called once per frame
@@ -31,10 +34,28 @@ public class BatMovement : MonoBehaviour {
         {
             if(minSpeed < topSpeed)
             {
-                minSpeed += Time.deltaTime * accelerationFactor;
+                speed += Time.deltaTime * accelerationFactor;
             }
         }
-
-        rb.velocity = (Vector3.right * inputHorizontal * minSpeed) + (Vector3.up * inputVertical * minSpeed);
+        if(!isStunned) {
+            rb.velocity = (Vector3.right * inputHorizontal * speed) + (Vector3.up * inputVertical * speed);
+        }        
 	}
+
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.CompareTag("Obstacle")) {
+            isStunned = true;
+            StartCoroutine(Stunned());
+            // calculate force vector
+            var force = transform.position - collision.transform.position;
+            // normalize force vector to get direction only and trim magnitude
+            force.Normalize();
+            rb.AddForce(force * 100);
+        }
+    }
+
+    private IEnumerator Stunned() {
+        yield return new WaitForSeconds(0.5f);
+        isStunned = false;
+    }
 }
