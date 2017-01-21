@@ -19,7 +19,7 @@ Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngi
 Loading C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll (this message is harmless)
 Loading C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll into Unity Child Domain
-- Completed reload, in  0.056 seconds
+- Completed reload, in  0.045 seconds
 Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\System.dll (this message is harmless)
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
@@ -30,16 +30,16 @@ The referenced script on this Behaviour (Game Object 'backgrounds') is missing!
  
 (Filename:  Line: 1754)
 
-UnloadTime: 3.098204 ms
+UnloadTime: 1.553412 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 12.101347 ms
-Scanning - Process took 35 ms to complete
+UnloadTime: 3.740259 ms
+Scanning - Process took 25 ms to complete
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 398.
-Total: 3.200013 ms (FindLiveObjects: 0.037357 ms CreateObjectMapping: 0.080051 ms MarkObjects: 3.046889 ms  DeleteObjects: 0.034483 ms)
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 395.
+Total: 2.511158 ms (FindLiveObjects: 0.037357 ms CreateObjectMapping: 0.030789 ms MarkObjects: 2.408528 ms  DeleteObjects: 0.034073 ms)
 
 Canceled path because a new one was requested.
 This happens when a new path is requested from the seeker when one was already being calculated.
@@ -154,4 +154,4 @@ If you are getting this a lot, you might want to consider how you are scheduling
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 256ac -> priority: 1 
+  Thread -> id: 2a730 -> priority: 1 
