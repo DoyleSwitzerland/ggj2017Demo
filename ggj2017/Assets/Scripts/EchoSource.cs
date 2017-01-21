@@ -7,14 +7,11 @@ public class EchoSource : MonoBehaviour {
     public float coolDown;
     public float echoSpeed;
 
-    public Texture echoTexture;
-
     public float recharge;
 
 	// Use this for initialization
 	void Start () {
         recharge = coolDown;
-        //GetComponent<Projector>().material.SetTexture("_ShadowTex", echoTexture);
     }
 
     void Update() {
@@ -26,13 +23,7 @@ public class EchoSource : MonoBehaviour {
     }
 
     void CreateEcho() {
-        
-    }
-
-    void CreateEchoOld() {
         EchoPropagation echoPropagation = Instantiate<EchoPropagation>(baseEchoPropagation);
         echoPropagation.Setup(transform, echoSpeed);
     }
-
-
 }

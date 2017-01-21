@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114387690516031528}
   - component: {fileID: 108696305524490064}
   - component: {fileID: 33448785507706016}
+  - component: {fileID: 119295252532104388}
   - component: {fileID: 23561807663215326}
   - component: {fileID: 54329225374949876}
   - component: {fileID: 135459729681214670}
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439172015559484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -144,6 +145,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 6
+  maxSize: 90
+  sizeIncreasePerFrame: 0.25
+  minAspectRatio: 0.25
+  aspectRatioDecreasePerFrame: 0.0025
+--- !u!119 &119295252532104388
+Projector:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439172015559484}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_NearClipPlane: 0.1
+  m_FarClipPlane: 50
+  m_FieldOfView: 35
+  m_AspectRatio: 1
+  m_Orthographic: 1
+  m_OrthographicSize: 3
+  m_Material: {fileID: 2100000, guid: 91e7b15319fd18a489d8ab62f913ed78, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!135 &135459729681214670
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -155,4 +178,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: -1, y: 0, z: 3}
+  m_Center: {x: -1, y: 0, z: 25}

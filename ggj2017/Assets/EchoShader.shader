@@ -37,9 +37,9 @@ Shader "Custom/Echo Projector" {
 
 Shader "Custom/Echo Projector" {
 	Properties {
-		_Color ("Main Color", Color) = (0.1,0.1,0.1,0)
-		_ShadowTex ("Cookie", 2D) = "" { TexGen ObjectLinear }
-		_FalloffTex ("FallOff", 2D) = "" { TexGen ObjectLinear }
+		_Color ("Main Color", Color) = (1,1,1,1)
+		_ShadowTex ("Cookie", 2D) = "" { }
+		_FalloffTex ("FallOff", 2D) = "" { }
 	}
 	
 	Subshader {
@@ -49,6 +49,7 @@ Shader "Custom/Echo Projector" {
 			ZWrite Off
 			//ColorMask RGB
 			Color[_Color]
+		//Blend is SrcFactor, DstFactor  - generated color is multiplied by SrcFactor, colour already on screen is multiplied by DstFac
 			Blend One One
 
 			CGPROGRAM
@@ -56,17 +57,6 @@ Shader "Custom/Echo Projector" {
 			#pragma fragment frag
 			#pragma multi_compile_fog
 			#include "UnityCG.cginc"
-
-			/*SetTexture[_ShadowTex]{
-				combine texture * primary, ONE - texture
-				Matrix[unity_Projector]
-			}
-
-			SetTexture[_FalloffTex]{
-				constantColor(0,0,0,0)
-				combine previous lerp(texture) constant
-				Matrix[unity_ProjectorClip]
-			}*/
 
 			struct v2f {
 				float4 uvShadow : TEXCOORD0;

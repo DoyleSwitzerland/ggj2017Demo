@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class EchoPropagation : MonoBehaviour {
     public float lifeTime;
+    public float maxSize;
+    public float sizeIncreasePerFrame;
+    public float minAspectRatio;
+    public float aspectRatioDecreasePerFrame;
 
-    private Light echoLight;
+    //private Light echoLight;
+    private Projector echoProjector;
     private Rigidbody echoRigidBody;
     private Collider echoCollider;
 
@@ -19,7 +24,8 @@ public class EchoPropagation : MonoBehaviour {
 
     // Use this for initialization
     public void Setup(Transform parent, float echoSpeed) {
-        echoLight = gameObject.GetComponent<Light>();
+        //echoLight = gameObject.GetComponent<Light>();
+        echoProjector = gameObject.GetComponent<Projector>();
         echoRigidBody = gameObject.GetComponent<Rigidbody>();
         echoCollider = gameObject.GetComponent<SphereCollider>();
 
@@ -33,11 +39,21 @@ public class EchoPropagation : MonoBehaviour {
         if (lifeTime  <= 0) {
             Destroy(gameObject);
         }
+        if (echoProjector.enabled) {
+            if (echoProjector.orthographicSize < maxSize) {
+                echoProjector.orthographicSize += sizeIncreasePerFrame;
+            }
+            if (echoProjector.aspectRatio > minAspectRatio) {
+                echoProjector.aspectRatio -= aspectRatioDecreasePerFrame;
+            }
+        }
 	}
 
     void OnCollisionEnter(Collision collision) {
         if (!collision.gameObject.CompareTag("Player")) {
-            echoLight.enabled = true;
+            //echoLight.enabled = true;
+            echoCollider.enabled = false;
+            echoProjector.enabled = true;
             EchoRigidBody.velocity = Vector3.zero;
             EchoRigidBody.angularVelocity = Vector3.zero;
         }
