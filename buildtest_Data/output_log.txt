@@ -1,0 +1,157 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [igdumdx32.dll 8.15.10.2418]
+    Renderer: Intel(R) HD Graphics Family
+    Vendor:   Intel
+    VRAM:     944 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 NULL=1 RESZ=1 SlowINTZ=0 ATOC=1 BC4=1 BC5=1
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll (this message is harmless)
+Loading C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\Pathfinding.Ionic.Zip.Reduced.dll into Unity Child Domain
+- Completed reload, in  0.056 seconds
+Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\O\Documents\ggj2017\buildtest_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+The referenced script on this Behaviour (Game Object 'backgrounds') is missing!
+ 
+(Filename:  Line: 1754)
+
+UnloadTime: 3.098204 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 12.101347 ms
+Scanning - Process took 35 ms to complete
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 398.
+Total: 3.200013 ms (FindLiveObjects: 0.037357 ms CreateObjectMapping: 0.080051 ms MarkObjects: 3.046889 ms  DeleteObjects: 0.034483 ms)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Canceled path because a new one was requested.
+This happens when a new path is requested from the seeker when one was already being calculated.
+For example if a unit got a new order, you might request a new path directly instead of waiting for the now invalid path to be calculated. Which is probably what you want.
+If you are getting this a lot, you might want to consider how you are scheduling path requests.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 256ac -> priority: 1 
