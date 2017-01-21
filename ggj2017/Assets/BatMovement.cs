@@ -32,7 +32,7 @@ public class BatMovement : MonoBehaviour {
         }
         else
         {
-            if(minSpeed < topSpeed)
+            if(speed < topSpeed)
             {
                 speed += Time.deltaTime * accelerationFactor;
             }
