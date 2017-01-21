@@ -171,7 +171,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 104
   m_CollisionDetection: 0
 --- !u!65 &118931451
 BoxCollider:
@@ -390,7 +390,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!212 &407618543
 SpriteRenderer:
