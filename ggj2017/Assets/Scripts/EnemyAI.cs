@@ -38,6 +38,7 @@ public class EnemyAI : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        distToPlayer = Vector3.Distance(player.position, transform.position);
         print(distToPlayer);
         if(distToPlayer <= followDistance) {
             shouldFollow = true;
@@ -89,8 +90,12 @@ public class EnemyAI : MonoBehaviour {
         transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
     }
 
-    private void OnPathComplete(Path p) {
-        Debug.Log("Yay, we got a path back. Did it have an error? " + p.error);
+    void OnPathComplete(Path p) {
+        if (!p.error) {
+            Path = p;
+            currentWaypoint = 1;
+        }
+        seeker.StartPath(transform.position, TargetPosition, OnPathComplete);
     }
 
     private IEnumerator findPath(Vector3 TargetPosition) {

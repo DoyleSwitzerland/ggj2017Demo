@@ -901,7 +901,7 @@ MonoBehaviour:
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
   showGraphs: 1
-  lastUniqueAreaIndex: 0
+  lastUniqueAreaIndex: 1
 --- !u!4 &1367521959
 Transform:
   m_ObjectHideFlags: 0
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 3
   topSpeed: 8
-  accelerationFactor: 5
+  accelerationFactor: 10
 --- !u!54 &1898246166
 Rigidbody:
   m_ObjectHideFlags: 0
