@@ -8,9 +8,11 @@ public class BatMovement : MonoBehaviour {
 
     private float topSpeed = 8.0f;
 
+    private float accelerationFactor = 5f;
+
     private Rigidbody rb;
 
-    private float inputHorzontal;
+    private float inputHorizontal;
 
     private float inputVertical;
 
@@ -22,11 +24,13 @@ public class BatMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        inputHorzontal = Input.GetAxisRaw("Horizontal");
+        inputHorizontal = Input.GetAxis("Horizontal");
 
-        inputVertical = Input.GetAxisRaw("Vertical");
+        inputVertical = Input.GetAxis("Vertical");
 
-        if(inputHorzontal == 0 && inputVertical == 0)
+        print(inputHorizontal);
+
+        if(inputHorizontal == 0 && inputVertical == 0)
         {
             speed = 3.0f;
         }
@@ -34,10 +38,10 @@ public class BatMovement : MonoBehaviour {
         {
             if(speed < topSpeed)
             {
-                speed += Time.deltaTime*2;
+                speed += Time.deltaTime * accelerationFactor;
             }
         }
 
-        rb.velocity = (Vector3.right * inputHorzontal * speed) + (Vector3.up * inputVertical * speed);
+        rb.velocity = (Vector3.right * inputHorizontal * speed) + (Vector3.up * inputVertical * speed);
 	}
 }
