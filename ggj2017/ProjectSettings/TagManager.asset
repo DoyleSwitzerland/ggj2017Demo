@@ -15,6 +15,7 @@ TagManager:
   - HealthBar
   - Hazard
   - Owl
+  - Moth
   layers:
   - Default
   - TransparentFX
