@@ -11,7 +11,7 @@ public class BuildTool {
 
     private static string EXECUTABLE_NAME = "GGJ2017";
 
-    private static string BUILD_SCENE_NAME = "Assets/Scenes/ggj2017.unity";
+    private static string BUILD_SCENE_NAME = "ggj2017/Assets/Editor/BuildScripts/Scenes/ggj2017.unity";
 
     #region Utilities
     private static void CreateFolder(string buildType) {
