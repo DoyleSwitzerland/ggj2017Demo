@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour {
         }
         // Direction to the next waypoint
         Vector3 dir = path.vectorPath[currentWaypoint];
-        dir.z = -1;
+        dir.z = 0;
         Move(dir);
         // The commented line is equivalent to the one below, but the one that is used
         // is slightly faster since it does not have to calculate a square root
