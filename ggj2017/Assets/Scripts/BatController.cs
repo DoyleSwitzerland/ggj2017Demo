@@ -13,6 +13,7 @@ public class BatController : MonoBehaviour {
     private EchoSource echoSource;
     private Rigidbody rb;
     private float numLives = 5.0f;
+    public GameObject dedScreen;
 
     public OwlAI owl;
 
@@ -57,6 +58,10 @@ public class BatController : MonoBehaviour {
     void Update() {
         checkActions();
         checkAnimationState();
+        if (numLives == 0)
+        {
+            dedScreen.SetActive(true);
+        }
     }
 
     private void checkActions() {
