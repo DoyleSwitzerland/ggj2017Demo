@@ -200,6 +200,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &582269723 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1772626094128644, guid: dc4367ac0d9286745afe53d35c188528,
+    type: 2}
+  m_PrefabInternal: {fileID: 1134414401}
 --- !u!1001 &603069716
 Prefab:
   m_ObjectHideFlags: 0
@@ -887,6 +892,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114530652174819434, guid: 21e33e4a98b7a724f8ddb5e2e15104cc,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 582269723}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21e33e4a98b7a724f8ddb5e2e15104cc, type: 2}
   m_IsPrefabParent: 0
@@ -906,7 +916,7 @@ GameObject:
   - component: {fileID: 1918928842}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

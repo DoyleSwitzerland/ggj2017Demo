@@ -7,6 +7,7 @@ public class BatController : MonoBehaviour {
     private Animator animator;
     private EchoSource echoSource;
     private Rigidbody rb;
+    private float numLives = 5.0f;
 
 
     private string IDLE = "Idle";
@@ -17,6 +18,18 @@ public class BatController : MonoBehaviour {
     private bool isStunned;
     public float stunTime = 1.0f;
 
+    public float NumLives 
+    {
+        get
+        {
+            return this.numLives;
+        }
+
+        set
+        {
+            this.numLives = value;
+        }
+    }
 
     void Start () {
         rb = GetComponent<Rigidbody>();
@@ -61,6 +74,12 @@ public class BatController : MonoBehaviour {
             force.Normalize();
             rb.AddForce(force * 100);
             isStunned = true;
+        }
+
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            print("enemy hit");
+            numLives--;
         }
     }
 

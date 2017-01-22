@@ -5,20 +5,25 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour {
 
     public Texture tex;
-    public float lives = 5.0f;
 
+    public GameObject player;
+    BatController bat;
+    private float lives;
     private float texWidth;
     private float texHeight;
 
 	// Use this for initialization
 	void Start () {
+        player = GameObject.FindWithTag("Player");
+        bat = player.GetComponent<BatController>();
+        lives = bat.NumLives;
         texWidth = tex.width;
         texHeight = tex.height;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        lives = bat.NumLives;
 	}
 
     void OnGUI()
