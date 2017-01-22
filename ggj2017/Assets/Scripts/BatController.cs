@@ -58,9 +58,12 @@ public class BatController : MonoBehaviour {
     void Update() {
         checkActions();
         checkAnimationState();
+
         if (numLives == 0)
         {
             dedScreen.SetActive(true);
+            Time.timeScale = 0.0f;
+            flap.Stop();
         }
     }
 
