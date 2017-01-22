@@ -5105,7 +5105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f295ec58497fc4d936d06475942859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dedScreen: {fileID: 0}
+  dedScreen: {fileID: 1287096610}
   owl: {fileID: 114353754491270240, guid: 77931e884b5633e4582fba06f56cc445, type: 2}
   stunTime: 1
   damageWaitTime: 1.5
