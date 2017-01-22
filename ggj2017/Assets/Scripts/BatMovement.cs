@@ -1,28 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BatMovement : MonoBehaviour {
 
-    public float minSpeed = 3.0f;
-    public float topSpeed = 8.0f;
-    public float accelerationFactor = 5f;
+    public float minSpeed = 6.0f;
+    public float topSpeed = 16.0f;
+    public float accelerationFactor = 40f;
 
-    private Rigidbody rb;
     private float inputHorizontal;
     private float inputVertical;
+
     private float speed;
+    public float Speed {
+        get {
+            return speed;
+        }
+    }
+
     private bool isStunned;
+    public bool IsStunned {
+        get {
+            return isStunned;
+        }
+    }
 
     // Use this for initialization
-	void Start () {
-        rb = GetComponent<Rigidbody>();
+    void Start () {
         isStunned = false;
         speed = minSpeed;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public Vector3 calculateVelocity () {
         inputHorizontal = Input.GetAxis("Horizontal");
         inputVertical = Input.GetAxis("Vertical");
 
@@ -36,26 +44,9 @@ public class BatMovement : MonoBehaviour {
             {
                 speed += Time.deltaTime * accelerationFactor;
             }
-        }
-        if(!isStunned) {
-            rb.velocity = (Vector3.right * inputHorizontal * speed) + (Vector3.up * inputVertical * speed);
-        }        
-	}
-
-    private void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.CompareTag("Obstacle")) {
-            StartCoroutine(Stunned());
-            // calculate force vector
-            var force = transform.position - collision.transform.position;
-            // normalize force vector to get direction only and trim magnitude
-            force.Normalize();
-            rb.AddForce(force * 100);
-            isStunned = true;
-        }
+        } 
+        
+        return (Vector3.right * inputHorizontal * speed) + (Vector3.up * inputVertical * speed);
     }
 
-    private IEnumerator Stunned() {
-        yield return new WaitForSeconds(1f);
-        isStunned = false;
-    }
 }
