@@ -10,15 +10,15 @@ public class EnemyAI : MonoBehaviour {
     public float followDistance = 5f;
     public float unFollowDistance = 7.5f;
     public Transform[] patrolPoints;
-    public Path Path;
+    public Path path;
     public Vector3 TargetPosition;
     public Seeker seeker;
 
     private float distToPlayer;
     private bool shouldFollow = false;
-    private float waitTime = 0.5f;
-    private float time = 0;
-    private const float nextWaypointDistance = .5f;
+    private float repathRate = .5f;
+    private float lastRepath = -9999;
+    private float nextWaypointDistance = 1f;
     private int currentWaypoint = 0;
     private int patrolPointIndex = 0;
 
@@ -34,63 +34,59 @@ public class EnemyAI : MonoBehaviour {
         seeker.StartPath(transform.position, TargetPosition, OnPathComplete);
     }
 
-    // Update is called once per frame
-    void Update() {
+    public void OnPathComplete(Path p) {
+        if (!p.error) {
+            path = p;
+            // Reset the waypoint counter so that we start to move towards the first point in the path
+            currentWaypoint = 0;
+        }
+    }
+
+    public void Update() {
         distToPlayer = Vector3.Distance(player.position, transform.position);
         if (distToPlayer <= followDistance) {
-            shouldFollow = true;
             TargetPosition = player.position;
+            shouldFollow = true;
         }
 
-        if (shouldFollow && distToPlayer >= unFollowDistance) {
-            shouldFollow = false;
+        if (distToPlayer >= unFollowDistance) {
             TargetPosition = patrolPoints[patrolPointIndex].position;
+            shouldFollow = false;
         }
 
-        time += Time.deltaTime;
-        if (time >= waitTime) {
-            StartCoroutine(findPath(TargetPosition));
-            time = 0;
+        if (Time.time - lastRepath > repathRate && seeker.IsDone()) {
+            lastRepath = Time.time + Random.value * repathRate * 0.5f;
+            // Start a new path to the targetPosition, call the the OnPathComplete function
+            // when the path has been calculated (which may take a few frames depending on the complexity)
+            seeker.StartPath(transform.position, TargetPosition, OnPathComplete);
         }
-
-        if (Path != null) {
-            //End of path reached
-            if (currentWaypoint >= Path.vectorPath.Count) {
+        if (path == null) {
+            // We have no path to follow yet, so don't do anything
+            return;
+        }
+        if (currentWaypoint > path.vectorPath.Count) return;
+        if (currentWaypoint == path.vectorPath.Count) {
+            if (!shouldFollow) {
                 patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
-                currentWaypoint = 0;
-                time += Time.deltaTime;
-                if (time >= waitTime) {
-                    StartCoroutine(findPath(TargetPosition));
-                    time = 0;
-                }
-                return;
+                TargetPosition = patrolPoints[patrolPointIndex].position;
             }
-
-            //TODO see if these three lines should be moved to the bottom of the update method, since logically it would make sense to move after the path is definitely set correctly
-            Vector3 moveTo = Path.vectorPath[currentWaypoint];
-            moveTo.z = 0;
-            Move(moveTo);
-
-            //Check if we are close enough to the next waypoint, if so proceed to follow the next waypoint
-            if (Vector3.Distance(transform.position, Path.vectorPath[currentWaypoint]) < nextWaypointDistance) {
-                currentWaypoint++;
-                return;
-            }
+            currentWaypoint++;
+            return;
+        }
+        // Direction to the next waypoint
+        Vector3 dir = path.vectorPath[currentWaypoint];
+        dir.z = -1;
+        Move(dir);
+        // The commented line is equivalent to the one below, but the one that is used
+        // is slightly faster since it does not have to calculate a square root
+        if (Vector3.Distance(transform.position, dir) < nextWaypointDistance) {
+            currentWaypoint++;
+            return;
         }
     }
 
     void Move(Vector3 moveTo) {
-        transform.LookAt(moveTo);
-        transform.Rotate(new Vector3(0, -90, 0), Space.Self);
-        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
-    }
-
-    void OnPathComplete(Path p) {
-        if (!p.error) {
-            Path = p;
-            currentWaypoint = 1;
-        }
-        seeker.StartPath(transform.position, TargetPosition, OnPathComplete);
+        transform.position = Vector3.Lerp(transform.position, moveTo, speed * Time.deltaTime);
     }
 
     private IEnumerator findPath(Vector3 TargetPosition) {
