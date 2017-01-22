@@ -26,15 +26,12 @@ public class BatController : MonoBehaviour {
     public float stunTime = 1.0f;
     public float damageWaitTime = 1.5f;
 
-    public float NumLives 
-    {
-        get
-        {
+    public float NumLives {
+        get {
             return this.numLives;
         }
 
-        set
-        {
+        set {
             this.numLives = value;
         }
     }
@@ -43,7 +40,7 @@ public class BatController : MonoBehaviour {
         get { return isStunned; }
     }
 
-    void Start () {
+    void Start() {
         canTakeDamage = true;
 
         audioSources = GetComponents<AudioSource>();
@@ -56,8 +53,8 @@ public class BatController : MonoBehaviour {
         echoSource = GetComponent<EchoSource>();
         movement = GetComponent<BatMovement>();
     }
-	
-	void Update () {
+
+    void Update() {
         checkActions();
         checkAnimationState();
     }
@@ -78,7 +75,7 @@ public class BatController : MonoBehaviour {
 
     private void updateDirection(bool isFacingRight) {
         if (isFacingRight) {
-            rb.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0)); 
+            rb.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
         } else {
             rb.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
         }
@@ -90,7 +87,7 @@ public class BatController : MonoBehaviour {
         } else {
             animator.SetBool(IS_STUNNED, false);
         }
-        
+
         if (echoSource.IsEchoing) {
             animator.SetBool(IS_ECHOING, true);
             screech.Play();
@@ -107,17 +104,21 @@ public class BatController : MonoBehaviour {
         force.Normalize();
         rb.AddForce(force * 100);
         isStunned = true;
-     
 
-        if((collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Hazard")) && canTakeDamage)
-        {
+
+        if ((collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Hazard")) && canTakeDamage) {
             numLives--;
             StartCoroutine(CanTakeDamage());
             canTakeDamage = false;
         }
 
-        if(collision.gameObject.CompareTag("Owl")) {
+        if (collision.gameObject.CompareTag("Owl")) {
             numLives = 0;
+        }
+
+        if (collision.gameObject.CompareTag("Moth")) {
+            numLives++;
+            Destroy(collision.gameObject);
         }
     }
 
@@ -126,8 +127,7 @@ public class BatController : MonoBehaviour {
         isStunned = false;
     }
 
-    private IEnumerator CanTakeDamage()
-    {
+    private IEnumerator CanTakeDamage() {
         yield return new WaitForSeconds(damageWaitTime);
         canTakeDamage = true;
     }
