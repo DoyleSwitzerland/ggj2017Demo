@@ -1,15 +1,53 @@
 fileFormatVersion: 2
-guid: ad09f57946bae6244aa41f5cad42387d
-timeCreated: 1485022432
+guid: a90ccd3065b6b6049a542c8106f8829d
+timeCreated: 1485045951
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: arm1_L
+    100002: arm1_R
+    100004: arm2_L
+    100006: arm2_L_end
+    100008: arm2_R
+    100010: arm2_R_end
+    100012: bat low
+    100014: bat_rig
+    100016: head
+    100018: jaw
+    100020: jaw_end
+    100022: neck
+    100024: //RootNode
+    100026: root
+    100028: shoulder_L
+    100030: shoulder_R
+    100032: tail
+    100034: tail_end
+    400000: arm1_L
+    400002: arm1_R
+    400004: arm2_L
+    400006: arm2_L_end
+    400008: arm2_R
+    400010: arm2_R_end
+    400012: bat low
+    400014: bat_rig
+    400016: head
+    400018: jaw
+    400020: jaw_end
+    400022: neck
+    400024: //RootNode
+    400026: root
+    400028: shoulder_L
+    400030: shoulder_R
+    400032: tail
+    400034: tail_end
     4300000: bat low
+    7400000: bat_rig|bind
+    7400002: bat_rig|flail
+    7400004: bat_rig|fly
+    7400006: bat_rig|scream
+    9500000: //RootNode
+    13700000: bat low
   materials:
     importMaterials: 1
     materialName: 0
@@ -72,7 +110,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
