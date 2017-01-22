@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class BatController : MonoBehaviour {
 
+    private AudioSource[] audioSources;
+    private AudioSource flap;
+    private AudioSource screech;
+    private AudioSource injury;
+
     private BatMovement movement;
     private Animator animator;
     private EchoSource echoSource;
@@ -40,6 +45,11 @@ public class BatController : MonoBehaviour {
     void Start () {
         canTakeDamage = true;
 
+        audioSources = GetComponents<AudioSource>();
+        flap = audioSources[0];
+        screech = audioSources[1];
+        injury = audioSources[2];
+
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         echoSource = GetComponent<EchoSource>();
@@ -72,6 +82,7 @@ public class BatController : MonoBehaviour {
         
         if (echoSource.IsEchoing) {
             animator.SetBool(IS_ECHOING, true);
+            screech.Play();
             echoSource.IsEchoing = false;
         } else {
             animator.SetBool(IS_ECHOING, false);
@@ -80,6 +91,7 @@ public class BatController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         StartCoroutine(Stunned());
+        injury.Play();
         var force = transform.position - collision.transform.position;
         force.Normalize();
         rb.AddForce(force * 100);
