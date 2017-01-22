@@ -16,7 +16,9 @@ public class BatController : MonoBehaviour {
     private string IS_ECHOING = "IsEchoing";
 
     private bool isStunned;
+    private bool canTakeDamage = true;
     public float stunTime = 1.0f;
+    public float damageWaitTime = 0.5f;
 
     public float NumLives 
     {
@@ -76,15 +78,29 @@ public class BatController : MonoBehaviour {
             isStunned = true;
         }
 
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.CompareTag("Enemy") && canTakeDamage)
         {
-            print("enemy hit");
             numLives--;
+            StartCoroutine(CanTakeDamage());
+            canTakeDamage = false;
+        }
+
+        if (collision.gameObject.CompareTag("Hazard") && canTakeDamage)
+        {
+            numLives--;
+            StartCoroutine(CanTakeDamage());
+            canTakeDamage = false;
         }
     }
 
     private IEnumerator Stunned() {
         yield return new WaitForSeconds(stunTime);
         isStunned = false;
+    }
+
+    private IEnumerator CanTakeDamage()
+    {
+        yield return new WaitForSeconds(damageWaitTime);
+        canTakeDamage = true;
     }
 }
