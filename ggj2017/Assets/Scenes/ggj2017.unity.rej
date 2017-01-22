@@ -1,0 +1,11 @@
+diff a/ggj2017/Assets/Scenes/ggj2017.unity b/ggj2017/Assets/Scenes/ggj2017.unity	(rejected hunks)
+@@ -567,7 +567,9 @@
+    m_LightProbeUsage: 0
+    m_ReflectionProbeUsage: 0
+    m_Materials:
+++<<<<<<< Updated upstream
+ +  - {fileID: 2100000, guid: ed9630129e5946743853949dec4cfb14, type: 2}
+++=======
+    - {fileID: 2100000, guid: e8469bd0880b3114ab561ecbc8de5f88, type: 2}
+ +>>>>>>> Stashed changes
+    m_StaticBatchInfo:
