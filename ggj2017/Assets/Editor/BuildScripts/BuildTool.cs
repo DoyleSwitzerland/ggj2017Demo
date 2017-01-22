@@ -9,9 +9,9 @@ public class BuildTool {
     private static string BUILD_TYPE_WIN64 = "Win64";
     private static string BUILD_TYPE_WIN32 = "Win32";
 
-    private static string EXECUTABLE_NAME = "GGJ2017";
+    private static string EXECUTABLE_NAME = "ggj2017";
 
-    private static string BUILD_SCENE_NAME = "ggj2017/Assets/Editor/BuildScripts/Scenes/ggj2017.unity";
+    private static string BUILD_SCENE_NAME = "Assets/Scenes/Mainmenu.unity";
 
     #region Utilities
     private static void CreateFolder(string buildType) {
