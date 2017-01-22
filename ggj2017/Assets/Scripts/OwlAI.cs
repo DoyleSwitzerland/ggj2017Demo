@@ -6,13 +6,13 @@ public class OwlAI : MonoBehaviour {
 
     public Transform player;
     public Vector3 TargetPosition;
-    public float speed = 7f;
+    public float speed = 17f;
 
     private Path path;
     private Seeker seeker;
     private float distToPlayer;
     private bool shouldFollow = false;
-    private float repathRate = .5f;
+    private float repathRate = 1.00f;
     private float lastRepath = -9999;
     private float nextWaypointDistance = 1f;
     private int currentWaypoint = 0;
@@ -49,6 +49,12 @@ public class OwlAI : MonoBehaviour {
                 shouldFollow = true;
                 StartCoroutine(FollowTime(2));
             }
+        }
+
+        //For occasional idle chase
+        if (Random.Range(0, 100) >= 40) {
+            shouldFollow = true;
+            StartCoroutine(FollowTime(2));
         }
 
         if (shouldFollow) {

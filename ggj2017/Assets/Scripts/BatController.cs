@@ -108,6 +108,7 @@ public class BatController : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         StartCoroutine(Stunned());
         injury.Play();
+        flap.Stop();
         var force = transform.position - collision.transform.position;
         force.Normalize();
         rb.AddForce(force * 100);
@@ -133,6 +134,7 @@ public class BatController : MonoBehaviour {
     private IEnumerator Stunned() {
         yield return new WaitForSeconds(stunTime);
         isStunned = false;
+        flap.Play();
     }
 
     private IEnumerator CanTakeDamage() {
