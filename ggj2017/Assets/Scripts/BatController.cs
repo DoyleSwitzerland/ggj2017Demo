@@ -8,7 +8,7 @@ public class BatController : MonoBehaviour {
     private EchoSource echoSource;
     private Rigidbody rb;
     private float numLives = 5.0f;
-
+    public OwlAI owl;
 
     private string IDLE = "Idle";
     private string FLYING = "Flying";
@@ -33,6 +33,10 @@ public class BatController : MonoBehaviour {
         }
     }
 
+    public bool IsStunned {
+        get { return isStunned; }
+    }
+
     void Start () {
         canTakeDamage = true;
 
@@ -54,6 +58,7 @@ public class BatController : MonoBehaviour {
 
             if (Input.GetAxisRaw("Fire1") == 1) {
                 echoSource.CreateEcho();
+                owl.PlayerEchoed();
             }
         }
     }
@@ -86,6 +91,10 @@ public class BatController : MonoBehaviour {
             numLives--;
             StartCoroutine(CanTakeDamage());
             canTakeDamage = false;
+        }
+
+        if(collision.gameObject.CompareTag("Owl")) {
+            numLives = 0;
         }
     }
 
