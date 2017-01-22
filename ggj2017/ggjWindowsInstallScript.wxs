@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+   <?if $(var.Platform) = x64 ?>
+	  <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+	  <?define Win64 = "yes" ?>
+	<?else ?>
+	  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+	  <?define Win64 = "no" ?>
+	<?endif ?>
+
+   <Product Id="*" 
+			UpgradeCode="2efe0ff0-3243-4fc2-997d-ff8bc41fa575" 
+            Name="$(var.ApplicationName)" 
+			Version="0.1.0.$(var.BambooBuildNumber)" 
+			Manufacturer="Firelight Studio" 
+			Language="1033">
+			
+      <Package 
+			Id="*"
+			InstallerVersion="200" 
+			Compressed="yes" 
+			Comments="Windows Installer Package"
+			Platform="$(var.Platform)"/>
+			
+	  <MajorUpgrade Schedule="afterInstallInitialize"
+			AllowDowngrades="yes"/>
+			
+      <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
+	  <Icon Id="SSGIcon.ico" SourceFile="Assets\Sprites\bat.ico" />
+			
+      <Directory Id="TARGETDIR" Name="SourceDir">
+         <Directory Id="$(var.PlatformProgramFilesFolder)">
+            <Directory Id="INSTALLDIR" Name="$(var.ApplicationName)">
+				<Directory Id="DATAINSTALLDIR" Name="$(var.DataFolder)">
+				</Directory>
+               <Component Id="ApplicationExe" Guid="*">
+                  <File Id="ApplicationFile1" Source="$(var.BuildFolderPath)\$(var.ExecutableName).exe"/>
+               </Component>
+            </Directory>
+         </Directory>
+		 
+         <Directory Id="ProgramMenuFolder">
+            <Directory Id="ProgramMenuSubfolder" Name="$(var.ApplicationName)">
+               <Component Id="ApplicationShortcuts" Guid="*">
+                  <Shortcut Id="ApplicationShortcut1" 
+						  Name="$(var.ApplicationName)" 
+						  Description="$(var.ApplicationName)" 
+						  Target="[INSTALLDIR]$(var.ExecutableName).exe" 
+						  WorkingDirectory="INSTALLDIR"
+						  Icon="SSGIcon.ico"/>
+                  <RegistryValue Root="HKCU" 
+							Key="Software\SSG\$(var.ApplicationName)"                           
+							Name="installed" 
+							Type="integer" 
+							Value="1" 
+							KeyPath="yes"/>
+                  <RemoveFolder Id="ProgramMenuSubfolder" On="uninstall"/>
+               </Component>
+            </Directory>
+         </Directory>
+      </Directory>
+	  
+      <Feature Id="DefaultFeature" Level="1">
+         <ComponentRef Id="ApplicationExe"/>
+		 <ComponentGroupRef Id="ApplicationData"/>
+         <ComponentRef Id="ApplicationShortcuts"/>
+      </Feature>
+   </Product>
+</Wix>
