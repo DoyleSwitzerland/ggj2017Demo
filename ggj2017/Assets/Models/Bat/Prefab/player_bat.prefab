@@ -477,7 +477,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1772626094128644}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -30, y: -16.1, z: 0}
+  m_LocalPosition: {x: -65.76501, y: -17.965656, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4231411767028342}
@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f295ec58497fc4d936d06475942859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dedScreen: {fileID: 0}
   owl: {fileID: 0}
   stunTime: 1
   damageWaitTime: 1.5
