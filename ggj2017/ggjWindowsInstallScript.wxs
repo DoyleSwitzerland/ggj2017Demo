@@ -27,7 +27,7 @@
 			AllowDowngrades="yes"/>
 			
       <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
-	  <Icon Id="SSGIcon.ico" SourceFile="Assets\Sprites\bat.ico" />
+	  <Icon Id="BatIcon.ico" SourceFile="ggj2017\Assets\Sprites\bat.ico" />
 			
       <Directory Id="TARGETDIR" Name="SourceDir">
          <Directory Id="$(var.PlatformProgramFilesFolder)">
@@ -48,7 +48,7 @@
 						  Description="$(var.ApplicationName)" 
 						  Target="[INSTALLDIR]$(var.ExecutableName).exe" 
 						  WorkingDirectory="INSTALLDIR"
-						  Icon="SSGIcon.ico"/>
+						  Icon="BatIcon.ico"/>
                   <RegistryValue Root="HKCU" 
 							Key="Software\SSG\$(var.ApplicationName)"                           
 							Name="installed" 
