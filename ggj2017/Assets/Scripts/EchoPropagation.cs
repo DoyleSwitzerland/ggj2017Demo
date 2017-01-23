@@ -25,13 +25,18 @@ public class EchoPropagation : MonoBehaviour {
     }
 
     // Use this for initialization
-    public void Setup(Transform parent, float echoSpeed) {
+    public void Setup(Transform parent, float echoSpeed, bool isFacingRight) {
         defaultLifeTime = lifeTime;
 
         echoProjector = gameObject.GetComponent<Projector>();
         echoRigidBody = gameObject.GetComponent<Rigidbody>();
         echoCollider = gameObject.GetComponent<SphereCollider>();
         echoSprite = GetComponent<SpriteRenderer>();
+
+        if (isFacingRight) {
+            echoSpeed *= -1;
+            echoSprite.flipX = !isFacingRight;
+        }
 
         transform.position = new Vector3(parent.position.x, parent.position.y, parent.position.z + transform.position.z);
         EchoRigidBody.velocity = new Vector3(echoSpeed, 0, 0);

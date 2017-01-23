@@ -16,6 +16,10 @@ public class BatMovement : MonoBehaviour {
         }
     }
 
+    public bool IsMoving {
+        get { return inputVertical != 0 || inputHorizontal != 0; }
+    }
+
     private bool isFacingRight;
 
     void Start () {

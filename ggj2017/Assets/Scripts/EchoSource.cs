@@ -31,11 +31,7 @@ public class EchoSource : MonoBehaviour {
         if (recharge >= coolDown) {
             recharge = 0;
             EchoPropagation echoPropagation = Instantiate<EchoPropagation>(baseEchoPropagation);
-            if (facingRight) {
-                echoPropagation.Setup(transform, echoSpeed);
-            } else {
-                echoPropagation.Setup(transform, -1*echoSpeed);
-            }
+            echoPropagation.Setup(transform, echoSpeed, facingRight);
             IsEchoing = true;
         }
     }

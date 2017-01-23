@@ -9,6 +9,12 @@ public class BatController : MonoBehaviour {
     private Rigidbody rb;
     private float numLives = 5.0f;
 
+    public OwlAI owl;
+
+    private AudioSource[] audioSources;
+    private AudioSource flap;
+    private AudioSource screech;
+    private AudioSource injury;
 
     private string IDLE = "Idle";
     private string FLYING = "Flying";
@@ -33,8 +39,17 @@ public class BatController : MonoBehaviour {
         }
     }
 
+    public bool IsStunned {
+        get { return isStunned; }
+    }
+
     void Start () {
         canTakeDamage = true;
+
+        audioSources = GetComponents<AudioSource>();
+        flap = audioSources[0];
+        flap = audioSources[1];
+        flap = audioSources[2];
 
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
@@ -56,6 +71,7 @@ public class BatController : MonoBehaviour {
 
             if (Input.GetAxisRaw("Fire1") == 1) {
                 echoSource.CreateEcho(isFacingRight);
+                owl.PlayerEchoed();
             }
         }
     }
@@ -77,6 +93,7 @@ public class BatController : MonoBehaviour {
         
         if (echoSource.IsEchoing) {
             animator.SetBool(IS_ECHOING, true);
+            screech.Play();
             echoSource.IsEchoing = false;
         } else {
             animator.SetBool(IS_ECHOING, false);
@@ -85,6 +102,7 @@ public class BatController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         StartCoroutine(Stunned());
+        injury.Play();
         var force = transform.position - collision.transform.position;
         force.Normalize();
         rb.AddForce(force * 100);
@@ -96,6 +114,10 @@ public class BatController : MonoBehaviour {
             numLives--;
             StartCoroutine(CanTakeDamage());
             canTakeDamage = false;
+        }
+
+        if(collision.gameObject.CompareTag("Owl")) {
+            numLives = 0;
         }
     }
 
