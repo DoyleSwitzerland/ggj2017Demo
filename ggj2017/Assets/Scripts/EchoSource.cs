@@ -18,7 +18,6 @@ public class EchoSource : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
     void Start () {
         recharge = coolDown;
         IsEchoing = false;
@@ -28,11 +27,15 @@ public class EchoSource : MonoBehaviour {
         recharge += Time.deltaTime*100;
     }
 
-    public void CreateEcho() {
+    public void CreateEcho(bool facingRight) {
         if (recharge >= coolDown) {
             recharge = 0;
             EchoPropagation echoPropagation = Instantiate<EchoPropagation>(baseEchoPropagation);
-            echoPropagation.Setup(transform, echoSpeed);
+            if (facingRight) {
+                echoPropagation.Setup(transform, echoSpeed);
+            } else {
+                echoPropagation.Setup(transform, -1*echoSpeed);
+            }
             IsEchoing = true;
         }
     }

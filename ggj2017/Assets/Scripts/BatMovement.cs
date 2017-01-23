@@ -43,18 +43,14 @@ public class BatMovement : MonoBehaviour {
     }
 
 
-    public Vector3 getDirection() {
+    public bool getDirection() {
         if (inputHorizontal > 0) {
             isFacingRight = true;
         } else if (inputHorizontal < 0) {
             isFacingRight = false;
         }
 
-        if (isFacingRight) {
-            return new Vector3(0, 90, 0);
-        } else {
-            return new Vector3(0, -90, 0);
-        }
+        return isFacingRight;
     }
 
 }

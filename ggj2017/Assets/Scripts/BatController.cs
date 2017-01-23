@@ -50,11 +50,21 @@ public class BatController : MonoBehaviour {
     private void checkActions() {
         if (!isStunned) {
             rb.velocity = movement.calculateVelocity();
-            rb.transform.rotation = Quaternion.Euler(movement.getDirection());
+
+            bool isFacingRight = movement.getDirection();
+            updateDirection(isFacingRight);
 
             if (Input.GetAxisRaw("Fire1") == 1) {
-                echoSource.CreateEcho();
+                echoSource.CreateEcho(isFacingRight);
             }
+        }
+    }
+
+    private void updateDirection(bool isFacingRight) {
+        if (isFacingRight) {
+            rb.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0)); 
+        } else {
+            rb.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
         }
     }
 
