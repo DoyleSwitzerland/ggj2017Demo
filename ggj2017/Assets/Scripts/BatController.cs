@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class BatController : MonoBehaviour {
 
+    private AudioSource[] audioSources;
+    private AudioSource flap;
+    private AudioSource screech;
+    private AudioSource injury;
+
     private BatMovement movement;
     private Animator animator;
     private EchoSource echoSource;
@@ -10,11 +15,6 @@ public class BatController : MonoBehaviour {
     private float numLives = 5.0f;
 
     public OwlAI owl;
-
-    private AudioSource[] audioSources;
-    private AudioSource flap;
-    private AudioSource screech;
-    private AudioSource injury;
 
     private string IDLE = "Idle";
     private string FLYING = "Flying";
@@ -48,8 +48,8 @@ public class BatController : MonoBehaviour {
 
         audioSources = GetComponents<AudioSource>();
         flap = audioSources[0];
-        flap = audioSources[1];
-        flap = audioSources[2];
+        screech = audioSources[1];
+        injury = audioSources[2];
 
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
