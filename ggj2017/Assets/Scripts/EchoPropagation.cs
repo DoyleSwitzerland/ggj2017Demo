@@ -8,11 +8,13 @@ public class EchoPropagation : MonoBehaviour {
     public float sizeIncreasePerFrame;
     public float minAspectRatio;
     public float aspectRatioDecreasePerFrame;
+    public float ageToStopDisplaying = 0.01f;
 
-    //private Light echoLight;
+    private float defaultLifeTime;
     private Projector echoProjector;
     private Rigidbody echoRigidBody;
     private Collider echoCollider;
+    private SpriteRenderer echoSprite;
 
     public Rigidbody EchoRigidBody {
         get { return echoRigidBody; }
@@ -24,10 +26,12 @@ public class EchoPropagation : MonoBehaviour {
 
     // Use this for initialization
     public void Setup(Transform parent, float echoSpeed) {
-        //echoLight = gameObject.GetComponent<Light>();
+        defaultLifeTime = lifeTime;
+
         echoProjector = gameObject.GetComponent<Projector>();
         echoRigidBody = gameObject.GetComponent<Rigidbody>();
         echoCollider = gameObject.GetComponent<SphereCollider>();
+        echoSprite = GetComponent<SpriteRenderer>();
 
         transform.position = new Vector3(parent.position.x, parent.position.y, parent.position.z + transform.position.z);
         EchoRigidBody.velocity = new Vector3(echoSpeed, 0, 0);
@@ -38,6 +42,8 @@ public class EchoPropagation : MonoBehaviour {
         lifeTime -= Time.deltaTime;
         if (lifeTime  <= 0) {
             Destroy(gameObject);
+        } else if (lifeTime <= defaultLifeTime - ageToStopDisplaying) {
+            echoSprite.enabled = false;
         }
         if (echoProjector.enabled) {
             if (echoProjector.orthographicSize < maxSize) {
@@ -49,9 +55,9 @@ public class EchoPropagation : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter(Collision collision) {
-        if (!collision.gameObject.CompareTag("Player")) {
-            //echoLight.enabled = true;
+    void OnTriggerEnter(Collider collider) {
+        if (!collider.gameObject.CompareTag("Player")) {
+            echoSprite.enabled = false;
             echoCollider.enabled = false;
             echoProjector.enabled = true;
             EchoRigidBody.velocity = Vector3.zero;

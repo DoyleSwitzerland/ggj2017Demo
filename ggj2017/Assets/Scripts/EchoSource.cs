@@ -4,6 +4,7 @@ public class EchoSource : MonoBehaviour {
     public EchoPropagation baseEchoPropagation;
     public float coolDown;
     public float echoSpeed;
+
     private bool isEchoing;
 
     private float recharge;
