@@ -9,6 +9,7 @@ public class EchoPropagation : MonoBehaviour {
     public float minAspectRatio;
     public float aspectRatioDecreasePerFrame;
     public float ageToStopDisplaying = 0.01f;
+    public float echoOffSet = 5.0f;
 
     private float defaultLifeTime;
     private Projector echoProjector;
@@ -32,17 +33,23 @@ public class EchoPropagation : MonoBehaviour {
         echoRigidBody = gameObject.GetComponent<Rigidbody>();
         echoCollider = gameObject.GetComponent<SphereCollider>();
         echoSprite = GetComponent<SpriteRenderer>();
+        echoSpeed = updatDirection(parent, echoSpeed, isFacingRight);
 
-        if (isFacingRight) {
-            echoSpeed *= -1;
-            echoSprite.flipX = !isFacingRight;
-        }
-
-        transform.position = new Vector3(parent.position.x, parent.position.y, parent.position.z + transform.position.z);
         EchoRigidBody.velocity = new Vector3(echoSpeed, 0, 0);
     }
+
+	private float updatDirection(Transform parent, float echoSpeed, bool isFacingRight) {
+        if (!isFacingRight) {
+            echoSpeed *= -1;
+            echoSprite.flipX = !isFacingRight;
+            transform.position = new Vector3(parent.position.x - echoOffSet, parent.position.y, parent.position.z + transform.position.z);
+        } else {
+            transform.position = new Vector3(parent.position.x + echoOffSet, parent.position.y, parent.position.z + transform.position.z);
+        }
+        return echoSpeed;
+    }
 	
-	// Update is called once per frame
+    // Update is called once per frame
 	void Update () {
         lifeTime -= Time.deltaTime;
         if (lifeTime  <= 0) {
