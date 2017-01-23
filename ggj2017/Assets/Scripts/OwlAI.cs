@@ -6,7 +6,7 @@ public class OwlAI : MonoBehaviour {
 
     public Transform player;
     public Vector3 TargetPosition;
-    public float speed = 7f;
+    public float speed = 17f;
 
     private Path path;
     private Seeker seeker;
