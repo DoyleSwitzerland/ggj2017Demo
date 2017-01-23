@@ -71,6 +71,7 @@ public class OwlAI : MonoBehaviour {
             // Direction to the next waypoint
             Vector3 dir = path.vectorPath[currentWaypoint];
             dir.z = -1;
+            checkDirection(dir);
             Move(dir);
             // The commented line is equivalent to the one below, but the one that is used
             // is slightly faster since it does not have to calculate a square root
@@ -95,6 +96,19 @@ public class OwlAI : MonoBehaviour {
 
     void Move(Vector3 moveTo) {
         transform.position = Vector3.Lerp(transform.position, moveTo, speed * Time.deltaTime);
+    }
+
+    private void checkDirection(Vector3 moveTo) {
+        bool isFacingRight = true;
+        if (moveTo.x < transform.position.x) {
+            isFacingRight = false;
+        } 
+
+        if (isFacingRight) {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+        } else {
+            transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        }
     }
 
     IEnumerator FollowTime(int time) {
