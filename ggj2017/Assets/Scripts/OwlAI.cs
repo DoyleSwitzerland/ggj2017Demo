@@ -51,6 +51,12 @@ public class OwlAI : MonoBehaviour {
             }
         }
 
+        //For occasional idle chase
+        if (Random.Range(0, 100) >= 80) {
+            shouldFollow = true;
+            StartCoroutine(FollowTime(2));
+        }
+
         if (shouldFollow) {
             TargetPosition = player.position;
             if (Time.time - lastRepath > repathRate && seeker.IsDone()) {
