@@ -4,7 +4,7 @@ using UnityEngine;
 public class BatController : MonoBehaviour {
 
     private BatMovement movement;
-    //private Animator animator;
+    private Animator animator;
     private EchoSource echoSource;
     private Rigidbody rb;
 
@@ -20,7 +20,7 @@ public class BatController : MonoBehaviour {
 
     void Start () {
         rb = GetComponent<Rigidbody>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         echoSource = GetComponent<EchoSource>();
         movement = GetComponent<BatMovement>();
     }
@@ -41,16 +41,16 @@ public class BatController : MonoBehaviour {
 
     private void checkAnimationState() {
         if (isStunned) {
-            //animator.SetBool(IS_STUNNED, true);
+            animator.SetBool(IS_STUNNED, true);
         } else {
-            //animator.SetBool(IS_STUNNED, false);
+            animator.SetBool(IS_STUNNED, false);
         }
         
         if (echoSource.IsEchoing) {
-            //animator.SetBool(IS_ECHOING, true);
+            animator.SetBool(IS_ECHOING, true);
             echoSource.IsEchoing = false;
         } else {
-            //animator.SetBool(IS_ECHOING, false);
+            animator.SetBool(IS_ECHOING, false);
         }
     }
 
