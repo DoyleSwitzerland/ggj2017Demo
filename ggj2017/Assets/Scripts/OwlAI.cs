@@ -6,7 +6,7 @@ public class OwlAI : MonoBehaviour {
 
     public Transform player;
     public Vector3 TargetPosition;
-    public float speed = 2.5f;
+    public float speed = 7f;
 
     private Path path;
     private Seeker seeker;
@@ -38,14 +38,14 @@ public class OwlAI : MonoBehaviour {
         distToPlayer = Vector3.Distance(player.position, transform.position);
 
         if (batControl.IsStunned) {
-            if (Random.Range(0, 100) >= 10) {
+            if (Random.Range(0, 100) >= 5) {
                 shouldFollow = true;
                 StartCoroutine(FollowTime(3));
             }
         }
 
         if (bat.IsMoving) {
-            if (Random.Range(0, 100) >= 95) {
+            if (Random.Range(0, 100) >= 30) {
                 shouldFollow = true;
                 StartCoroutine(FollowTime(2));
             }
