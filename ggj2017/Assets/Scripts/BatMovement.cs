@@ -16,20 +16,13 @@ public class BatMovement : MonoBehaviour {
         }
     }
 
-    private bool isStunned;
-    public bool IsStunned {
-        get {
-            return isStunned;
-        }
-    }
+    private bool isFacingRight;
 
-    // Use this for initialization
     void Start () {
-        isStunned = false;
+        isFacingRight = true;
         speed = minSpeed;
 	}
 	
-	// Update is called once per frame
 	public Vector3 calculateVelocity () {
         inputHorizontal = Input.GetAxis("Horizontal");
         inputVertical = Input.GetAxis("Vertical");
@@ -47,6 +40,21 @@ public class BatMovement : MonoBehaviour {
         } 
         
         return (Vector3.right * inputHorizontal * speed) + (Vector3.up * inputVertical * speed);
+    }
+
+
+    public Vector3 getDirection() {
+        if (inputHorizontal > 0) {
+            isFacingRight = true;
+        } else if (inputHorizontal < 0) {
+            isFacingRight = false;
+        }
+
+        if (isFacingRight) {
+            return new Vector3(0, 90, 0);
+        } else {
+            return new Vector3(0, -90, 0);
+        }
     }
 
 }

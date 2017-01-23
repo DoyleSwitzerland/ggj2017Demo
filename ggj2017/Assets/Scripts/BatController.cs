@@ -16,9 +16,9 @@ public class BatController : MonoBehaviour {
     private string IS_ECHOING = "IsEchoing";
 
     private bool isStunned;
-    private bool canTakeDamage = true;
+    private bool canTakeDamage;
     public float stunTime = 1.0f;
-    public float damageWaitTime = 0.5f;
+    public float damageWaitTime = 1.5f;
 
     public float NumLives 
     {
@@ -34,6 +34,8 @@ public class BatController : MonoBehaviour {
     }
 
     void Start () {
+        canTakeDamage = true;
+
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         echoSource = GetComponent<EchoSource>();
@@ -48,6 +50,8 @@ public class BatController : MonoBehaviour {
     private void checkActions() {
         if (!isStunned) {
             rb.velocity = movement.calculateVelocity();
+            rb.transform.rotation = Quaternion.Euler(movement.getDirection());
+
             if (Input.GetAxisRaw("Fire1") == 1) {
                 echoSource.CreateEcho();
             }
@@ -70,22 +74,14 @@ public class BatController : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Obstacle")) {
-            StartCoroutine(Stunned());
-            var force = transform.position - collision.transform.position;
-            force.Normalize();
-            rb.AddForce(force * 100);
-            isStunned = true;
-        }
+        StartCoroutine(Stunned());
+        var force = transform.position - collision.transform.position;
+        force.Normalize();
+        rb.AddForce(force * 100);
+        isStunned = true;
+     
 
-        if(collision.gameObject.CompareTag("Enemy") && canTakeDamage)
-        {
-            numLives--;
-            StartCoroutine(CanTakeDamage());
-            canTakeDamage = false;
-        }
-
-        if (collision.gameObject.CompareTag("Hazard") && canTakeDamage)
+        if((collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Hazard")) && canTakeDamage)
         {
             numLives--;
             StartCoroutine(CanTakeDamage());
