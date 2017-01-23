@@ -1287,8 +1287,8 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: ad09f57946bae6244aa41f5cad42387d, type: 3}
   m_PrefabInternal: {fileID: 1898246161}
---- !u!65 &1898246163
-BoxCollider:
+--- !u!64 &1898246163
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1297,8 +1297,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.20768175, y: 0.120188124, z: 0.06347452}
-  m_Center: {x: 0, y: 0.06085794, z: -0.0012583602}
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: ad09f57946bae6244aa41f5cad42387d, type: 3}
 --- !u!114 &1898246164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,7 +1316,6 @@ MonoBehaviour:
     type: 2}
   coolDown: 500
   echoSpeed: 20
-  recharge: 0
 --- !u!114 &1898246165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,7 +1329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 6
   topSpeed: 16
-  accelerationFactor: 20
+  accelerationFactor: 40
 --- !u!54 &1898246166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1344,6 +1345,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1898246167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1898246162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f295ec58497fc4d936d06475942859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 1
 --- !u!1 &2041066480
 GameObject:
   m_ObjectHideFlags: 0

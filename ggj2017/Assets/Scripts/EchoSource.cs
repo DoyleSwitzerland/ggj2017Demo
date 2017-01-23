@@ -1,29 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EchoSource : MonoBehaviour {
     public EchoPropagation baseEchoPropagation;
     public float coolDown;
     public float echoSpeed;
+    private bool isEchoing;
 
-    public float recharge;
+    private float recharge;
 
-	// Use this for initialization
-	void Start () {
+    public bool IsEchoing {
+        get {
+            return isEchoing;
+        }
+        set {
+            isEchoing = value;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         recharge = coolDown;
+        IsEchoing = false;
     }
 
     void Update() {
         recharge += Time.deltaTime*100;
-        if (recharge >= coolDown && Input.GetAxisRaw("Fire1") == 1) {
-            CreateEcho();
-            recharge = 0;
-        }
     }
 
-    void CreateEcho() {
-        EchoPropagation echoPropagation = Instantiate<EchoPropagation>(baseEchoPropagation);
-        echoPropagation.Setup(transform, echoSpeed);
+    public void CreateEcho() {
+        if (recharge >= coolDown) {
+            recharge = 0;
+            EchoPropagation echoPropagation = Instantiate<EchoPropagation>(baseEchoPropagation);
+            echoPropagation.Setup(transform, echoSpeed);
+            IsEchoing = true;
+        }
     }
 }
