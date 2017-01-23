@@ -11,7 +11,9 @@ public class BuildTool {
 
     private static string EXECUTABLE_NAME = "ggj2017";
 
-    private static string BUILD_SCENE_NAME = "Assets/Scenes/Mainmenu.unity";
+    private static string BUILD_MENU_NAME = "Assets/Scenes/Mainmenu.unity";
+	private static string BUILD_MAIN_NAME = "Assets/Scenes/ggj2017.unity";
+
 
     #region Utilities
     private static void CreateFolder(string buildType) {
@@ -51,7 +53,7 @@ public class BuildTool {
 
         // Get filename.
         string path = Path.Combine(Path.Combine(currentPath, UNITY_BUILDS_FOLDER), BUILD_TYPE_WIN64);
-        string[] levels = new string[] { BUILD_SCENE_NAME };
+        string[] levels = new string[] { BUILD_MENU_NAME, BUILD_MAIN_NAME };
 
         // Build player.
         BuildPipeline.BuildPlayer(levels, Path.Combine(path, EXECUTABLE_NAME) + version + ".exe", BuildTarget.StandaloneWindows, BuildOptions.None);
@@ -71,7 +73,7 @@ public class BuildTool {
 
         // Get filename.
         string path = Path.Combine(Path.Combine(currentPath, UNITY_BUILDS_FOLDER), BUILD_TYPE_WIN32);
-        string[] levels = new string[] { BUILD_SCENE_NAME };
+        string[] levels = new string[] { BUILD_MENU_NAME, BUILD_MAIN_NAME };
 
         // Build player.
         BuildPipeline.BuildPlayer(levels, Path.Combine(path, EXECUTABLE_NAME) + version + ".exe", BuildTarget.StandaloneWindows, BuildOptions.None);
